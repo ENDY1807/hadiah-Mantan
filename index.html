@@ -318,20 +318,23 @@
     }
 
     // Tombol "Mau"
-    yesBtn.addEventListener('click', function() {
-      const params = {
-        message: "Ada yang klik tombol MAU di website kamu ❤️"
-      };
+yesBtn.addEventListener('click', function() {
+  const params = {
+    message: "Ada yang klik tombol MAU di website kamu ❤️"
+  };
 
-      emailjs.send("service_5tth3bl", "template_w4j1d8l", params)
-        .then(function(response) {
-          console.log("SUKSES:", response);
-          alert('Terima kasih! Aku janji akan membuatmu bahagia 😊❤️');
-        }, function(error) {
-          console.error("ERROR:", error);
-          alert("Gagal kirim notif, cek console (F12) untuk detail.");
-        });
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", params)
+    .then(function(response) {
+      alert("✅ Email terkirim ke Gmail kamu!");
+      console.log("SUKSES:", response);
+    })
+    .catch(function(error) {
+      alert("❌ Gagal kirim: " + JSON.stringify(error));
+      console.error("ERROR:", error);
     });
+});
+
   </script>
 </body>
 </html>
+

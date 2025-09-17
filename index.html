@@ -319,7 +319,9 @@
             
             // Tombol "Mau" - Aksi ketika dipilih
             yesBtn.addEventListener('click', function() {
-                alert('Terima kasih! Aku janji akan membuatmu bahagia 😊❤️');
+                emailjs.send("service_5tth3bl","template_w4j1d8l",{
+                    alert('Terima kasih! Aku janji akan membuatmu bahagia 😊❤️');
+                });
             });
         });
 
@@ -332,11 +334,7 @@
             const params = {
              message: "Ada yang klik tombol MAU di website kamu ❤️"
         };
-
-        emailjs.send("service_5tth3bl","template_w4j1d8l",{
-            .then(function(response) {
-                alert("Notif berhasil dikirim ke email kamu!");
-        }); function(error) {
+        function(error) {
             alert("Gagal kirim notif, cek lagi konfigurasi.");
         });
         }
@@ -344,5 +342,6 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 </body>
 </html>
+
 
 

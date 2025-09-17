@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ucapan Spesial</title>
-    <style>
-        * {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ucapan Spesial</title>
+  <style>
+    * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -219,128 +219,119 @@
                 align-items: center;
             }
         }
-    </style>
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Tampilan amplop -->
-        <div class="envelope" id="envelope">
-            <div class="envelope-inner">
-                <div class="envelope-front">
-                    <div class="envelope-flap"></div>
-                    <p>Klik untuk membuka</p>
-                </div>
-                <div class="envelope-back">
-                    <p>Surat Untukmu 💌</p>
-                </div>
-            </div>
+  <div class="container">
+    <!-- Amplop -->
+    <div class="envelope" id="envelope">
+      <div class="envelope-inner">
+        <div class="envelope-front">
+          <div class="envelope-flap"></div>
+          <p>Klik untuk membuka</p>
         </div>
+        <div class="envelope-back">
+          <p>Surat Untukmu 💌</p>
+        </div>
+      </div>
+    </div>
 
-        <div class="letter" id="letter">
-            <h2>Selamat Ulang Tahun!</h2>
-            <p>Selamat ulang tahun. 
+    <!-- Isi surat -->
+    <div class="letter" id="letter">
+      <h2>Selamat Ulang Tahun!</h2>
+      <p>Selamat ulang tahun. 
                 Kita dulu pernah sama-sama sibuk sampai akhirnya harus melepaskan, 
                 tapi aku masih percaya setiap orang punya jalannya masing-masing untuk bahagia. 
                 Semoga di usia baru ini, kamu semakin bijak, semakin kuat, dan semakin dekat dengan semua cita-cita yang kamu perjuangkan. 
                 Aku tidak lagi ada di sisimu, tapi aku tetap berharap dunia memperlakukanmu dengan lembut dan memberimu kebahagiaan tanpa batas. 
-                Selamat merayakan harimu, semoga semua yang kamu jalani ke depan selalu indah
-            </p>
-            <p>Terima kasih sudah menjadi bagian dari hidupku dan memberikan banyak kenangan indah. Aku bersyukur bisa mengenal seseorang sepertimu.</p>
-            <p class="letter-footer">Endy❤️</p>
-            
-            <button class="btn" id="nextBtn">Lanjut...</button>
-        </div>
-
-        <!-- Tampilan pertanyaan -->
-        <div class="question-container" id="questionContainer">
-            <h2>Mau Balikan?</h2>
-            <p>Aku ngerti dulu kita nggak bisa bareng karena kesibukan. Tapi sekarang aku sadar, hubungan itu butuh usaha, bukan alasan. Aku pengen balikan sama kamu, dengan cara yang lebih baik dari sebelumnya</p>
-            
-            <div class="buttons-container">
-                <button class="btn yes-btn" id="yesBtn" onclick="kirimNotif()">Mau</button>
-                <button class="btn no-btn" id="noBtn">Ngga Mau</button>
-            </div>
-            
-            <p class="instructions">*Coba klik "Ngga Mau" kalau bisa 😊</p>
-        </div>
+                Selamat merayakan harimu, semoga semua yang kamu jalani ke depan selalu indah</p>
+      <p class="letter-footer">Endy❤️</p>
+      <button class="btn" id="nextBtn">Lanjut...</button>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const envelope = document.getElementById('envelope');
-            const letter = document.getElementById('letter');
-            const nextBtn = document.getElementById('nextBtn');
-            const questionContainer = document.getElementById('questionContainer');
-            const noBtn = document.getElementById('noBtn');
-            const yesBtn = document.getElementById('yesBtn');
-            const buttonsContainer = document.querySelector('.buttons-container');
-            
-            // Animasi membuka amplop
-            envelope.addEventListener('click', function() {
-                this.style.pointerEvents = 'none';
-                document.querySelector('.envelope-flap').style.transform = 'rotateX(180deg)';
-                document.querySelector('.envelope-inner').style.animation = 'openEnvelope 1s forwards';
-                
-                setTimeout(function() {
-                    letter.style.display = 'block';
-                    envelope.style.display = 'none';
-                }, 1000);
-            });
-            
-            // Tombol lanjut
-            nextBtn.addEventListener('click', function() {
-                letter.style.display = 'none';
-                questionContainer.style.display = 'block';
-            });
-            
-            // Tombol "Ngga Mau" yang berpindah-pindah
-            noBtn.addEventListener('mouseover', function() {
-                moveButton();
-            });
-            
-            noBtn.addEventListener('touchstart', function(e) {
-                e.preventDefault();
-                moveButton();
-            });
-            
-            function moveButton() {
-                const containerRect = buttonsContainer.getBoundingClientRect();
-                const btnRect = noBtn.getBoundingClientRect();
-                
-                const maxX = containerRect.width - btnRect.width - 10;
-                const maxY = containerRect.height - btnRect.height - 10;
-                
-                const randomX = Math.floor(Math.random() * maxX);
-                const randomY = Math.floor(Math.random() * maxY);
-                
-                noBtn.style.left = randomX + 'px';
-                noBtn.style.top = randomY + 'px';
-            }
-            
-            // Tombol "Mau" - Aksi ketika dipilih
-            yesBtn.addEventListener('click', function() {
-                emailjs.send("service_5tth3bl", "template_fqxoxrd", params)
-                    .then(function(response) {
-                        alert('Terima kasih! Aku janji akan membuatmu bahagia 😊❤️');
-                }
-            });
-        });
+    <!-- Pertanyaan -->
+    <div class="question-container" id="questionContainer">
+      <h2>Mau Balikan?</h2>
+      <p>Aku ngerti dulu kita nggak bisa bareng karena kesibukan. Tapi sekarang aku sadar, hubungan itu butuh usaha, bukan alasan. Aku pengen balikan sama kamu, dengan cara yang lebih baik dari sebelumnya</p>
+      <div class="buttons-container">
+        <button class="btn yes-btn" id="yesBtn">Mau</button>
+        <button class="btn no-btn" id="noBtn">Ngga Mau</button>
+      </div>
+      <p class="instructions">*Coba klik "Ngga Mau" kalau bisa 😊</p>
+    </div>
+  </div>
 
-        (function(){
-             emailjs.init("FtHel37vz20ZGuLI1"); // ganti dengan public key dari EmailJS
-        })();
+  <!-- Import library EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    // Inisialisasi EmailJS
+    (function(){    
+      emailjs.init("FtHel37vz20ZGuLI1"); // ganti dengan public key dari EmailJS
+    })();
 
-        function kirimNotif() {
-            // data yang dikirim ke template
-            const params = {
-             message: "Ada yang klik tombol MAU di website kamu ❤️"
-        };
-        function(error) {
-            alert("Gagal kirim notif, cek lagi konfigurasi.");
+    const envelope = document.getElementById('envelope');
+    const letter = document.getElementById('letter');
+    const nextBtn = document.getElementById('nextBtn');
+    const questionContainer = document.getElementById('questionContainer');
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const buttonsContainer = document.querySelector('.buttons-container');
+
+    // Buka amplop
+    envelope.addEventListener('click', function() {
+      this.style.pointerEvents = 'none';
+      document.querySelector('.envelope-flap').style.transform = 'rotateX(180deg)';
+      document.querySelector('.envelope-inner').style.animation = 'openEnvelope 1s forwards';
+
+      setTimeout(function() {
+        letter.style.display = 'block';
+        envelope.style.display = 'none';
+      }, 1000);
+    });
+
+    // Lanjut ke pertanyaan
+    nextBtn.addEventListener('click', function() {
+      letter.style.display = 'none';
+      questionContainer.style.display = 'block';
+    });
+
+    // Tombol "Ngga Mau" pindah-pindah
+    noBtn.addEventListener('mouseover', moveButton);
+    noBtn.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      moveButton();
+    });
+
+    function moveButton() {
+      const containerRect = buttonsContainer.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      const maxX = containerRect.width - btnRect.width - 10;
+      const maxY = containerRect.height - btnRect.height - 10;
+
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      noBtn.style.position = "absolute";
+      noBtn.style.left = randomX + 'px';
+      noBtn.style.top = randomY + 'px';
+    }
+
+    // Tombol "Mau"
+    yesBtn.addEventListener('click', function() {
+      const params = {
+        message: "Ada yang klik tombol MAU di website kamu ❤️"
+      };
+
+      emailjs.send("service_5tth3bl", "template_w4j1d8l", params)
+        .then(function(response) {
+          console.log("SUKSES:", response);
+          alert('Terima kasih! Aku janji akan membuatmu bahagia 😊❤️');
+        }, function(error) {
+          console.error("ERROR:", error);
+          alert("Gagal kirim notif, cek console (F12) untuk detail.");
         });
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    });
+  </script>
 </body>
 </html>
-

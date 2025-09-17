@@ -165,16 +165,18 @@
         .yes-btn {
             background: #2ecc71;
             z-index: 10;
+            position: static;
         }
 
         .yes-btn:hover {
             background: #27ae60;
+            position: static;
         }
 
         .no-btn {
             background: #e74c3c;
             transition: all 0.1s;
-            position: inherit;
+            position: absolute;
         }
 
         .instructions {
@@ -337,5 +339,6 @@ yesBtn.addEventListener('click', function() {
   </script>
 </body>
 </html>
+
 
 

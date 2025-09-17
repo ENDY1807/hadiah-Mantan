@@ -174,7 +174,7 @@
         .no-btn {
             background: #e74c3c;
             transition: all 0.1s;
-            position: relative;
+            position: inherit;
         }
 
         .instructions {
@@ -236,27 +236,32 @@
             </div>
         </div>
 
-        <!-- Tampilan surat -->
         <div class="letter" id="letter">
             <h2>Selamat Ulang Tahun!</h2>
-            <p>Di hari yang spesial ini, aku ingin mengucapkan selamat ulang tahun untukmu. Semoga di usia yang baru ini, kamu selalu diberikan kesehatan, kebahagiaan, dan kesuksesan dalam segala hal.</p>
+            <p>Selamat ulang tahun. 
+                Kita dulu pernah sama-sama sibuk sampai akhirnya harus melepaskan, 
+                tapi aku masih percaya setiap orang punya jalannya masing-masing untuk bahagia. 
+                Semoga di usia baru ini, kamu semakin bijak, semakin kuat, dan semakin dekat dengan semua cita-cita yang kamu perjuangkan. 
+                Aku tidak lagi ada di sisimu, tapi aku tetap berharap dunia memperlakukanmu dengan lembut dan memberimu kebahagiaan tanpa batas. 
+                Selamat merayakan harimu, semoga semua yang kamu jalani ke depan selalu indah
+            </p>
             <p>Terima kasih sudah menjadi bagian dari hidupku dan memberikan banyak kenangan indah. Aku bersyukur bisa mengenal seseorang sepertimu.</p>
-            <p class="letter-footer">Dengan sayang,<br>❤️</p>
+            <p class="letter-footer">Endy❤️</p>
             
             <button class="btn" id="nextBtn">Lanjut...</button>
         </div>
 
         <!-- Tampilan pertanyaan -->
         <div class="question-container" id="questionContainer">
-            <h2>Mau kembali bersamaku?</h2>
-            <p>Aku sadar selama ini sudah banyak membuat kesalahan. Tapi aku berubah dan ingin memperbaiki semuanya. Maukah kamu memberi aku kesempatan lagi?</p>
+            <h2>Mau Balikan?</h2>
+            <p>Aku ngerti dulu kita nggak bisa bareng karena kesibukan. Tapi sekarang aku sadar, hubungan itu butuh usaha, bukan alasan. Aku pengen balikan sama kamu, dengan cara yang lebih baik dari sebelumnya</p>
             
             <div class="buttons-container">
-                <button class="btn yes-btn" id="yesBtn">Mau</button>
+                <button class="btn yes-btn" id="yesBtn" onclick="kirimNotif()">Mau</button>
                 <button class="btn no-btn" id="noBtn">Ngga Mau</button>
             </div>
             
-            <p class="instructions">*Coba klik "Ngga Mau" jika berani 😊</p>
+            <p class="instructions">*Coba klik "Ngga Mau" kalau bisa 😊</p>
         </div>
     </div>
 
@@ -317,8 +322,25 @@
                 alert('Terima kasih! Aku janji akan membuatmu bahagia 😊❤️');
             });
         });
+
+        (function(){
+             emailjs.init("FtHel37vz20ZGuLI1"); // ganti dengan public key dari EmailJS
+        })();
+
+        function kirimNotif() {
+            // data yang dikirim ke template
+            const params = {
+             message: "Ada yang klik tombol MAU di website kamu ❤️"
+        };
+
+        emailjs.send("service_5tth3bl", "template_fqxoxrd", params)
+            .then(function(response) {
+                alert("Notif berhasil dikirim ke email kamu!");
+        }, function(error) {
+            alert("Gagal kirim notif, cek lagi konfigurasi.");
+        });
+        }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 </body>
 </html>
-
-
